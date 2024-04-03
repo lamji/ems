@@ -39,5 +39,17 @@ export default function useStyles() {
       alignItems: 'center',
       justifyContent: 'center',
     },
+    chartWrapper: {
+      border: '1px solid',
+      borderColor: 'primary.dark',
+      borderRadius: '10px',
+      mb: '20px',
+      padding: '20px',
+      py: 3,
+      width: '100%',
+      overflowX: 'scroll', // Enable horizontal scrolling
+      overflowY: 'scroll', // Hide vertical scrolling
+      maxWidth: '100%', // Ensure box takes full width of parent container
+    },
   };
 }

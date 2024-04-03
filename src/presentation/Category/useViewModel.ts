@@ -1,11 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
+import React from 'react';
 import { useState } from 'react';
 import useStyles from './useStyles';
 import { addDays } from 'date-fns';
-import React from 'react';
+import { useIsMobile } from '@/src/utils/helper';
 
 export default function useViewModel() {
   const classes = useStyles();
+  const { isMobilV1 } = useIsMobile();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const [state, setState] = useState([
@@ -70,5 +73,6 @@ export default function useViewModel() {
     handleClose,
     handleClick,
     anchorEl,
+    isMobilV1,
   };
 }

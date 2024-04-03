@@ -45,7 +45,7 @@ export default function BasicList() {
             <Typography>Expenses Category List</Typography>
           </Box>
 
-          <Box sx={classes.rootCategory}>
+          <Box sx={classes.rootCategory} className="sideBarCustom">
             {ListSideNav2.map((item: any, idx: number) => {
               return (
                 <ListItem disablePadding key={idx}>

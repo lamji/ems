@@ -17,7 +17,8 @@ export function formatCurrencyTotal(total: number, currency = '₱') {
 }
 
 export const useIsMobile = () => {
-  const isMobile = useMediaQuery('(max-width:460px)');
+  const isMobilV1 = useMediaQuery('(max-width:429px)');
+  const isMobile = useMediaQuery('(max-width:895px)');
   const tablet = useMediaQuery('(min-width:768px) and (max-width:834px)'); // Adjusted query for tablet
   const dashboardHideCategory = useMediaQuery('(max-width:1381px)');
 
@@ -25,6 +26,7 @@ export const useIsMobile = () => {
     isMobile,
     dashboardHideCategory,
     tablet,
+    isMobilV1,
   };
 };
 
