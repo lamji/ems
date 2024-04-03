@@ -1,95 +1,109 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+import React from 'react';
+import { Card, CardContent, Typography, Link, Button } from '@mui/material';
+import styles from './page.module.css';
+// import { useDispatch, useSelector } from '@/src/utils/redux/store';
+import { CardQueries } from '@/src/utils/query/queries/cardQueries';
+import { useSelector } from '@/src/utils/redux/store';
+// import { getResourcesSuccess } from '@/src/utils/redux/slices/mainSlices';
 
-export default function Home() {
+// Import Redux-related functions and actions
+
+// Define the Home component
+const Home: React.FC = () => {
+  const { refetch } = CardQueries();
+  // const dispatch = useDispatch();
+
+  // const onSubmit = async (formData) => {
+  //   try {
+  //     await mutation.mutateAsync(formData);
+  //   } catch (error) {
+  //     console.log('An error has occured: ', error);
+  //   }
+  // };
+  // Initialize useDispatch to dispatch Redux actions
+
+  // Select the 'cardDetails' data from the Redux store using useSelector
+  const { cardDetails } = useSelector((state) => state.cards);
+
+  // useEffect hook to dispatch 'getResources' action when the component mounts
+  // useEffect(() => {
+  //   isSuccess && dispatch(getResourcesSuccess(data?.data));
+  // }, []);
+
+  // Handler function for clicking the 'Find something to do' button
+  const handleGetWorkClick = () => {
+    refetch();
+  };
+
+  // JSX for rendering the button
+  const renderButton = (
+    <>
+      <h1
+        style={{
+          fontFamily: 'Roboto, sans-serif',
+          color: '#000000',
+          textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)',
+        }}
+      >
+        Bored?
+      </h1>
+      <Button variant="contained" color="primary" onClick={() => handleGetWorkClick()}>
+        Find something to do
+      </Button>
+    </>
+  );
+
+  // JSX for rendering the card with fetched data
+  const renderCard = (
+    <Card
+      sx={{
+        mt: 10,
+        boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)',
+        borderRadius: '10px',
+        backgroundColor: '#F8C8DC',
+        padding: '16px',
+        maxWidth: '400px',
+        margin: '0 auto',
+        textAlign: 'center',
+      }}
+    >
+      <CardContent>
+        <Typography variant="h5" sx={{ marginBottom: '16px', fontWeight: 'bold' }}>
+          {cardDetails?.activity}
+        </Typography>
+
+        <Typography variant="body1" sx={{ marginBottom: '8px' }}>
+          Type: {cardDetails?.type}
+        </Typography>
+
+        {/* Link to external resource */}
+        <Link
+          href={cardDetails?.link}
+          target="_blank"
+          rel="noopener"
+          color="primary"
+          sx={{ textDecoration: 'none' }}
+        >
+          How to do...
+        </Link>
+      </CardContent>
+    </Card>
+  );
+
+  // JSX for the main component
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+      {/* Render the button */}
+      {renderButton}
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div style={{ marginTop: '30px' }}>
+        {/* Render the card */}
+        {renderCard}
       </div>
     </main>
   );
-}
+};
+
+// Export the Home component as the default export
+export default Home;
