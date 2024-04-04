@@ -11,6 +11,8 @@ import Header from '../../Header';
 import BasicList from '../../List';
 import { useAppSelector, useAppDispatch } from '@/src/utils/redux/hooks';
 import { setDrawerOpen } from '@/src/utils/redux/slices/common';
+import useStyles from '../useStyles';
+import { customTheme } from '@/src/utils/theme';
 
 const drawerWidth = 280;
 
@@ -24,6 +26,7 @@ interface Props {
 
 export default function ResponsiveDrawer(props: Props) {
   const drawerState = useAppSelector((state) => state.common.drawer);
+  const classes = useStyles();
   const dispatch = useAppDispatch();
   const { window } = props;
 
@@ -45,10 +48,17 @@ export default function ResponsiveDrawer(props: Props) {
   };
 
   const drawer = (
-    <div style={{ paddingTop: '10px' }}>
+    <Box
+      style={{
+        ...classes.root,
+        paddingTop: '10px',
+        backgroundColor: customTheme.palette.primary.main,
+        height: '100vh',
+      }}
+    >
       <Header />
       <BasicList />
-    </div>
+    </Box>
   );
 
   // Remove this const when copying and pasting into your project.
@@ -76,12 +86,17 @@ export default function ResponsiveDrawer(props: Props) {
             <MenuIcon />
           </IconButton>
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Typography variant="h5" fontWeight={700}>
-              Budget
-            </Typography>
-            <Typography variant="h5" fontWeight={700} color="primary.contrastText">
-              Tracker
-            </Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Typography variant="h5" fontWeight={700} color="secondary.main">
+                E
+              </Typography>
+              <Typography variant="h5" fontWeight={700} color="primary.main">
+                M
+              </Typography>
+              <Typography variant="h5" fontWeight={700} color="secondary.main">
+                S
+              </Typography>
+            </Box>
           </Box>
         </Toolbar>
       </AppBar>

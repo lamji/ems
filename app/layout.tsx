@@ -43,7 +43,10 @@ export default function RootLayout({
                   xs={12}
                   md={12}
                   sx={{
-                    padding: '10px',
+                    padding: {
+                      md: '10px',
+                      xs: 0,
+                    },
                     ml: '20px',
                     marginLeft: {
                       xs: 0,

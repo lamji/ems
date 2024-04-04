@@ -4,7 +4,6 @@ export default function useStyles() {
     transactionsWrapper: {
       padding: {
         md: 2,
-        xs: '10px',
       },
     },
     searchWrapper: {

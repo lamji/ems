@@ -40,15 +40,14 @@ export default function useStyles() {
       justifyContent: 'center',
     },
     chartWrapper: {
-      border: '1px solid',
-      borderColor: 'primary.dark',
+      backgroundColor: 'primary.contrastText',
       borderRadius: '10px',
       mb: '20px',
       padding: '20px',
       py: 3,
       width: '100%',
-      overflowX: 'scroll', // Enable horizontal scrolling
-      overflowY: 'scroll', // Hide vertical scrolling
+      overflowX: 'auto', // Enable horizontal scrolling
+      overflowY: 'hidden', // Hide vertical scrolling
       maxWidth: '100%', // Ensure box takes full width of parent container
     },
   };
