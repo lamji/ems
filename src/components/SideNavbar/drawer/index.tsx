@@ -88,13 +88,13 @@ export default function ResponsiveDrawer(props: Props) {
           </IconButton>
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Typography variant="h5" fontWeight={700} color="secondary.main">
+              <Typography variant="h5" fontWeight={700} color="primary.main">
                 E
               </Typography>
               <Typography variant="h5" fontWeight={700} color="primary.main">
                 M
               </Typography>
-              <Typography variant="h5" fontWeight={700} color="secondary.main">
+              <Typography variant="h5" fontWeight={700} color="primary.main">
                 S
               </Typography>
             </Box>

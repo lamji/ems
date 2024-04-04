@@ -72,7 +72,9 @@ export default function CategoryPresentation() {
             )}
           </Box>
         </Box>
-        <Typography mb={2}>History</Typography>
+        <Typography mb={2} fontWeight={700}>
+          History
+        </Typography>
         <Table columns={columns} rows={rows} />
       </Box>
     </div>

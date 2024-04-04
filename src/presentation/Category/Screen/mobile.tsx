@@ -18,7 +18,7 @@ export function CardMobile() {
           Total expenses by filter
         </Typography>
         <Typography fontWeight={700} sx={{ color: 'error.main' }}>
-          - {formatCurrency(7000)}
+          {formatCurrency(7000)}
         </Typography>
       </Box>
       <Box sx={classes.balanceWrapper}>

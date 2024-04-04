@@ -1,3 +1,5 @@
+// next.config.js
+
 const advancedHeaders = [
   {
     key: 'X-DNS-Prefetch-Control',
@@ -44,14 +46,13 @@ const nextConfig = {
       },
     ];
   },
+  images: {
+    domains: ['res.cloudinary.com'],
+  },
 };
 
 module.exports = async () => {
-  /**
-   * @type {import('next').NextConfig}
-   */
-
-  const plugins = []; //All your plugins go into this array
+  const plugins = []; // All your plugins go into this array
 
   return plugins.reduce((acc, next) => next(acc), nextConfig);
 };

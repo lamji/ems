@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useIsMobile } from '@/src/utils/helper';
 import useStyles from './useStyles';
 import { Row } from '@/src/utils/types/tableTypes';
+import { dashboardData } from '@/src/utils/constants';
 
 export default function useViewModel() {
   const { isMobilV1 } = useIsMobile();
@@ -78,6 +79,7 @@ export default function useViewModel() {
       sortingColumn,
       sortDirection,
       handleMenuClose,
+      dashboardData,
     },
     actions: {
       handleSave,

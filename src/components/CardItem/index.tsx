@@ -7,21 +7,21 @@ import { Box, Typography } from '@mui/material';
 import moment from 'moment/moment';
 
 import Image from 'next/image';
-import { formatCurrency, iconGenerator, useIsMobile } from '@/src/utils/helper';
+import { formatCurrency, useIsMobile } from '@/src/utils/helper';
 
-export default function CardItem({ type, description, dateAdded, categoryName, amount }: any) {
+export default function CardItem({ type, description, dateAdded, categoryName, amount, img }: any) {
   const classes = useStyles();
   const { isMobile } = useIsMobile();
 
   if (!type) return null;
-  const icon = categoryName && iconGenerator(categoryName);
+
   return (
     <>
       <Box className="card-item-container" sx={classes.container}>
         <Box className="card-item-first-wrapper" sx={classes.firstWrapper}>
           <Box className="card-image-wrapper" sx={{ display: 'flex', alignItems: 'center' }}>
             <Image
-              src={icon}
+              src={img}
               width={30}
               height={30}
               alt="Picture of the author"
@@ -45,14 +45,14 @@ export default function CardItem({ type, description, dateAdded, categoryName, a
             </Typography>
           </Box>
           <Typography sx={{ ...classes.category, display: isMobile ? 'none' : 'block' }}>
-            {type}
+            {type || ''}
           </Typography>
         </Box>
         {type.toLowerCase() === 'income' ? (
           <Box>
             {isMobile && (
               <Typography sx={{ textAlign: 'right', fontSize: '12px', fontWeight: 700 }}>
-                {categoryName}
+                {categoryName || ''}
               </Typography>
             )}
 
@@ -62,7 +62,7 @@ export default function CardItem({ type, description, dateAdded, categoryName, a
           <Box>
             {isMobile && (
               <Typography sx={{ textAlign: 'right', fontSize: '12px', fontWeight: 700 }}>
-                {categoryName}
+                {categoryName || ''}
               </Typography>
             )}
 

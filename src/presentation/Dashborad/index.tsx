@@ -25,6 +25,7 @@ export default function Dashboard() {
         }}
       >
         <Typography
+          className="defaultMobilePadding"
           variant="h5"
           sx={{ fontWeight: 700, mb: 2, marginTop: isMobilV1 ? '50px' : 'unset' }}
         >
@@ -71,34 +72,38 @@ export default function Dashboard() {
               <AppCalendar />
             </Box>
             {/* Total money Expense, Income, Balance */}
-            <Box
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-              }}
-            >
-              <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <AmountCard title="Expenses" amount={formatCurrencyTotal(1000)} />
-                <AmountCard title="Income" amount={formatCurrencyTotal(3000)} />
-              </Box>
-              <AmountCard title="Balance" amount={formatCurrencyTotal(500)} />
-            </Box>
-            <Divider sx={{ mb: 2 }} />
             <Box>
-              {Object.keys(dashboardData).length !== 0 &&
-                dashboardData?.transactions.map((res, id) => {
-                  return (
-                    <CardItem
-                      key={id}
-                      type={res.type}
-                      description={res.description}
-                      dateAdded={res.dateAdded}
-                      categoryName={res.categoryName}
-                      amount={res.amount}
-                    />
-                  );
-                })}
+              <Box
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                }}
+              >
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                  <AmountCard title="Expenses" amount={formatCurrencyTotal(1000)} />
+                  <AmountCard title="Income" amount={formatCurrencyTotal(3000)} />
+                </Box>
+                <AmountCard title="Balance" amount={formatCurrencyTotal(500)} />
+              </Box>
+              <Divider sx={{ mb: 2 }} />
+              <Box>
+                {Object.keys(dashboardData).length !== 0 &&
+                  dashboardData?.transactions.map((res, id) => {
+                    console.log('hahahhahha', res.image);
+                    return (
+                      <CardItem
+                        key={id}
+                        type={res.type}
+                        description={res.description}
+                        dateAdded={res.dateAdded}
+                        categoryName={res.categoryName}
+                        amount={res.amount}
+                        img={res.image}
+                      />
+                    );
+                  })}
+              </Box>
             </Box>
           </Grid>
           {!isMobile && (

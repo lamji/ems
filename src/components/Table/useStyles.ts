@@ -1,6 +1,14 @@
 export default function useStyles() {
   return {
     root: {},
+    rootMobile: {},
+    historyBox: {
+      padding: '10px',
+      borderRadius: '10px',
+      boxShadow: '1px 1px 8px 0px rgba(0,0,0,0.10)',
+      mt: 1,
+      mb: 3,
+    },
     tableContainer: {
       borderRadius: '10px',
       position: 'relative',

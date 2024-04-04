@@ -1,14 +1,3 @@
-import FastfoodIcon from '@mui/icons-material/Fastfood';
-import FlightIcon from '@mui/icons-material/Flight';
-import HomeIcon from '@mui/icons-material/Home';
-import CarIcon from '@mui/icons-material/DriveEta';
-import ShoppingIcon from '@mui/icons-material/ShoppingCart';
-import FitnessIcon from '@mui/icons-material/FitnessCenter';
-import WorkIcon from '@mui/icons-material/Work';
-import EntertainmentIcon from '@mui/icons-material/LocalMovies';
-import HealthIcon from '@mui/icons-material/FitnessCenter';
-import EducationIcon from '@mui/icons-material/School';
-
 export const dashboardData = {
   _id: '64984dbb980a584a90733efd',
   categories: [
@@ -44,6 +33,8 @@ export const dashboardData = {
       type: 'Income',
       amount: 10000,
       balanceAfterTransaction: 30000,
+      image:
+        'https://res.cloudinary.com/dlax3esau/image/upload/v1712209816/tracker/water_j2qhjl.png',
     },
     {
       description: 'Test money',
@@ -54,6 +45,8 @@ export const dashboardData = {
       type: 'Income',
       amount: 10,
       balanceAfterTransaction: 10010,
+      image:
+        'https://res.cloudinary.com/dlax3esau/image/upload/v1712209816/tracker/water_j2qhjl.png',
     },
     {
       description: 'description',
@@ -63,6 +56,8 @@ export const dashboardData = {
       categoryName: 'Food',
       type: 'Expenses',
       amount: 100,
+      image:
+        'https://res.cloudinary.com/dlax3esau/image/upload/v1712209816/tracker/water_j2qhjl.png',
     },
   ],
   __v: 32,
@@ -215,70 +210,70 @@ export const ListSideNav2 = [
     label: 'Restaurants',
     name: 'restaurants',
     url: '/category/restaurants',
-    icon: <FastfoodIcon />,
+    icon: 'https://res.cloudinary.com/dlax3esau/image/upload/v1712209814/tracker/salary_lzktrb.png',
   },
   {
     id: 2,
     label: 'Flights',
     name: 'flights',
     url: '/category/flights',
-    icon: <FlightIcon />,
+    icon: 'https://res.cloudinary.com/dlax3esau/image/upload/v1712209816/tracker/water_j2qhjl.png',
   },
   {
     id: 3,
     label: 'Home Expenses',
     name: 'home-expenses',
     url: '/category/home-expenses',
-    icon: <HomeIcon />,
+    icon: 'https://res.cloudinary.com/dlax3esau/image/upload/v1712209816/tracker/water_j2qhjl.png',
   },
   {
     id: 4,
     label: 'Car Rentals',
     name: 'car-rentals',
     url: '/category/car-rentals',
-    icon: <CarIcon />,
+    icon: 'https://res.cloudinary.com/dlax3esau/image/upload/v1712209816/tracker/water_j2qhjl.png',
   },
   {
     id: 5,
     label: 'Shopping',
     name: 'shopping',
     url: '/category/shopping',
-    icon: <ShoppingIcon />,
+    icon: 'https://res.cloudinary.com/dlax3esau/image/upload/v1712209816/tracker/water_j2qhjl.png',
   },
   {
     id: 6,
     label: 'Fitness',
     name: 'fitness',
     url: '/category/fitness',
-    icon: <FitnessIcon />,
+    icon: 'https://res.cloudinary.com/dlax3esau/image/upload/v1712209816/tracker/water_j2qhjl.png',
   },
   {
     id: 7,
     label: 'Work Expenses',
     name: 'work-expenses',
     url: '/category/work-expenses',
-    icon: <WorkIcon />,
+    icon: 'https://res.cloudinary.com/dlax3esau/image/upload/v1712209816/tracker/water_j2qhjl.png',
   },
   {
     id: 8,
     label: 'Entertainment',
     name: 'entertainment',
     url: '/category/entertainment',
-    icon: <EntertainmentIcon />,
+    icon: 'https://res.cloudinary.com/dlax3esau/image/upload/v1712209816/tracker/water_j2qhjl.png',
   },
   {
     id: 9,
     label: 'Healthcare',
     name: 'healthcare',
     url: '/category/healthcare',
-    icon: <HealthIcon />,
+    icon: 'https://res.cloudinary.com/dlax3esau/image/upload/v1712209816/tracker/water_j2qhjl.png',
   },
   {
     id: 10,
     label: 'Education',
     name: 'education',
     url: '/category/education',
-    icon: <EducationIcon />,
+    icon: 'https://res.cloudinary.com/dlax3esau/image/upload/v1712209816/tracker/water_j2qhjl.png',
   },
 ];
 

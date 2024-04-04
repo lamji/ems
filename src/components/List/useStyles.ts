@@ -33,5 +33,8 @@ export default function useStyles() {
       alignItems: 'center',
       justifyContent: 'space-between',
     },
+    images: {
+      marginRight: '15px',
+    },
   };
 }

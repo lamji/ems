@@ -13,6 +13,7 @@ import Link from 'next/link';
 import { Divider, Typography } from '@mui/material';
 import ViewModel from './viewModel';
 import { ListSideNav2 } from '@/src/utils/constants';
+import Image from 'next/image';
 
 // Import MUI icons for categories
 
@@ -61,7 +62,16 @@ export default function BasicList() {
                         },
                       }}
                     >
-                      {item.icon} {/* Include the MUI icon */}
+                      <Box>
+                        <Image
+                          src={item.icon}
+                          width={24}
+                          height={24}
+                          alt="Picture of the author"
+                          style={classes.images}
+                        />
+                      </Box>
+
                       <ListItemText primary={item.label} />
                     </ListItemButton>
                   </Link>
