@@ -3,7 +3,7 @@ import useStyles from './useStyles';
 
 export default function useViewModel() {
   const classes = useStyles();
-  const { isMobile, tablet } = useIsMobile();
+  const { isMobile, tablet, isMobilV1 } = useIsMobile();
 
   const handleAddTransaction = () => {
     //  setOpenModal(true);
@@ -14,5 +14,6 @@ export default function useViewModel() {
     handleAddTransaction,
     isMobile,
     tablet,
+    isMobilV1,
   };
 }

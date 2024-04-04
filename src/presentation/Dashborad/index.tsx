@@ -13,7 +13,7 @@ import CardItem from '@/src/components/CardItem';
 import SideNav from '@/src/components/ChartNav';
 
 export default function Dashboard() {
-  const { classes, handleAddTransaction, isMobile } = useViewModel();
+  const { classes, handleAddTransaction, isMobile, isMobilV1 } = useViewModel();
   return (
     <div>
       <Box
@@ -24,7 +24,10 @@ export default function Dashboard() {
           },
         }}
       >
-        <Typography variant="h5" sx={{ fontWeight: 700, mb: 2 }}>
+        <Typography
+          variant="h5"
+          sx={{ fontWeight: 700, mb: 2, marginTop: isMobilV1 ? '50px' : 'unset' }}
+        >
           Dashboard
         </Typography>
 
