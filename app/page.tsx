@@ -5,6 +5,8 @@ import styles from './page.module.css';
 // import { useDispatch, useSelector } from '@/src/utils/redux/store';
 import { CardQueries } from '@/src/utils/query/queries/cardQueries';
 import { useSelector } from '@/src/utils/redux/store';
+import UploadImages from '@/src/components/UploadImages';
+
 // import { getResourcesSuccess } from '@/src/utils/redux/slices/mainSlices';
 
 // Import Redux-related functions and actions
@@ -96,6 +98,7 @@ const Home: React.FC = () => {
     <main className={styles.main}>
       {/* Render the button */}
       {renderButton}
+      <UploadImages />
 
       <div style={{ marginTop: '30px' }}>
         {/* Render the card */}
