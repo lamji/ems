@@ -27,6 +27,7 @@ export default function CustomMobileTable() {
                   dateAdded={res.dateAdded}
                   categoryName={''}
                   amount={res.amount}
+                  img={res.image}
                 />
               );
             })}
@@ -48,6 +49,7 @@ export default function CustomMobileTable() {
                   dateAdded={res.dateAdded}
                   categoryName={''}
                   amount={res.amount}
+                  img={res.image}
                 />
               );
             })}

@@ -50,5 +50,8 @@ export default function useStyles() {
       overflowY: 'hidden', // Hide vertical scrolling
       maxWidth: '100%', // Ensure box takes full width of parent container
     },
+    closeButtonWrapper: {
+      textAlign: 'right',
+    },
   };
 }

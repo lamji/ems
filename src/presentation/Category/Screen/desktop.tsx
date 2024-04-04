@@ -12,15 +12,20 @@ export default function CategoryDesktop() {
     <div>
       <Box sx={classes.headerWrapper}>
         <Box>
-          <Box sx={classes.filterWrapper} onClick={(event: any) => handleClick(event)}>
-            <FilterAltIcon /> <Typography>Filter by</Typography>
+          <Box sx={classes.filterWrapper} onClick={() => handleClick()}>
+            <FilterAltIcon /> <Typography>Filter by Date</Typography>
           </Box>
 
           <Typography fontWeight={700}>Chart by filter</Typography>
           <Typography fontSize={'12px'} mb={2}>
             Date from{' '}
-            <span style={{ fontWeight: 700 }}>{moment(state[0].startDate).format('LL')}</span> To{' '}
-            <span style={{ fontWeight: 700 }}>{moment(state[0].endDate).format('LL')}</span>
+            <span style={{ fontWeight: 700 }}>
+              {moment(state?.date?.selectedDate[0]?.startDate).format('LL')}
+            </span>{' '}
+            To{' '}
+            <span style={{ fontWeight: 700 }}>
+              {moment(state?.date?.selectedDate[0]?.endDate).format('LL')}
+            </span>
           </Typography>
         </Box>
         <Box sx={classes.filterBoxWrapper}>

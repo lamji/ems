@@ -1,23 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import React from 'react';
-import { useState } from 'react';
 import useStyles from './useStyles';
 import { addDays } from 'date-fns';
 import { useIsMobile } from '@/src/utils/helper';
+import { useAppDispatch, useAppSelector } from '@/src/utils/redux/hooks';
+import { openDialog, setDateRange } from '@/src/utils/redux/slices/common';
 
 export default function useViewModel() {
   const classes = useStyles();
   const { isMobilV1 } = useIsMobile();
+  const state = useAppSelector((state) => state.common);
+  const dispatch = useAppDispatch();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [checked, setChecked] = React.useState(true);
   const open = Boolean(anchorEl);
-  const [state, setState] = useState([
-    {
-      startDate: new Date(),
-      endDate: addDays(new Date(), 0),
-      key: 'selection',
-    },
-  ]);
 
   const columns = [
     { id: 'type', label: 'Type' },
@@ -50,17 +47,54 @@ export default function useViewModel() {
     },
   ];
   const handleChange = (item: any) => {
-    setState([item.selection]);
+    dispatch(setDateRange([item.selection]));
     setTimeout(() => {
       handleClose();
     }, 2000);
   };
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
+  const handleClick = () => {
+    dispatch(openDialog(true));
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleCloseDialog = () => {
+    dispatch(openDialog(false));
+    dispatch(
+      setDateRange([
+        {
+          startDate: new Date(),
+          endDate: addDays(new Date(), 0),
+          key: 'selection',
+        },
+      ])
+    );
+  };
+
+  const handleApplyFilter = () => {
+    dispatch(openDialog(false));
+  };
+
+  const handleClickMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleChangeCheckBox = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setChecked(event.target.checked);
+  };
+
+  const handleClear = () => {
+    dispatch(
+      setDateRange([
+        {
+          startDate: new Date(),
+          endDate: addDays(new Date(), 0),
+          key: 'selection',
+        },
+      ])
+    );
   };
 
   return {
@@ -74,5 +108,13 @@ export default function useViewModel() {
     handleClick,
     anchorEl,
     isMobilV1,
+
+    handleCloseDialog,
+    handleClickMenu,
+    openDialog: state.dialog.isOpen,
+    checked,
+    handleChangeCheckBox,
+    handleClear,
+    handleApplyFilter,
   };
 }

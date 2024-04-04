@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, Button, Dialog, DialogContent, IconButton, Typography } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 
 import useViewModel from './useViewModel';
 import CustomPieChart from '@/src/components/Chart';
@@ -11,11 +12,23 @@ import CategoryDesktop from './Screen/desktop';
 import { CardMobile, ChartMobile } from './Screen/mobile';
 import Table from '@/src/components/Table';
 import { customTheme } from '@/src/utils/theme';
+import { DateRange, DateRangePicker } from 'react-date-range';
 
 export default function CategoryPresentation() {
-  const { classes, columns, rows, isMobilV1 } = useViewModel();
+  const {
+    classes,
+    columns,
+    rows,
+    isMobilV1,
+    openDialog,
+    handleChange,
+    state,
+    handleCloseDialog,
+    handleClear,
+    handleApplyFilter,
+  } = useViewModel();
 
-  console.log(isMobilV1);
+  console.log('haise', state);
 
   return (
     <div>
@@ -27,29 +40,46 @@ export default function CategoryPresentation() {
           Category
         </Typography>
 
-        {/* <Menu
-          id="basic-menu"
-          anchorEl={anchorEl}
-          open={open}
-          MenuListProps={{
-            'aria-labelledby': 'basic-button',
-          }}
+        {isMobilV1 ? <CardMobile /> : <CategoryDesktop />}
+        <Dialog
+          open={openDialog}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+          fullScreen={isMobilV1 ? true : false}
+          maxWidth={'lg'}
         >
-          <MenuItem>
-            <Box>
-              <Typography>Select Type</Typography>
+          <Box sx={{ textAlign: 'right' }}>
+            <IconButton onClick={handleCloseDialog}>
+              <CloseIcon />
+            </IconButton>
+          </Box>
+
+          <DialogContent>
+            {isMobilV1 ? (
+              <>
+                <DateRange
+                  editableDateInputs={true}
+                  onChange={(item) => handleChange(item)}
+                  moveRangeOnFirstSelection={false}
+                  ranges={state.date.selectedDate}
+                />
+              </>
+            ) : (
               <DateRangePicker
                 onChange={(item) => handleChange(item)}
                 moveRangeOnFirstSelection={false}
                 months={2}
-                ranges={state}
+                ranges={state.date.selectedDate}
                 direction="horizontal"
               />
-            </Box>
-          </MenuItem>
-        </Menu> */}
-        {isMobilV1 ? <CardMobile /> : <CategoryDesktop />}
+            )}
 
+            <Box>
+              <Button onClick={handleApplyFilter}>Apply Filter</Button>
+              <Button onClick={handleClear}>Clear</Button>
+            </Box>
+          </DialogContent>
+        </Dialog>
         <Box sx={{ ...classes.chartWrapper, height: isMobilV1 ? 'auto' : '470px' }}>
           <Box sx={{ width: '400px' }}>
             {isMobilV1 ? (
