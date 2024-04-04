@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import React from 'react';
-import CustomTable from '@/src/components/Table';
 import { Box, Typography } from '@mui/material';
 
 import useViewModel from './useViewModel';
@@ -10,6 +9,8 @@ import { labels } from '@/src/components/Chart/utils';
 
 import CategoryDesktop from './Screen/desktop';
 import { CardMobile, ChartMobile } from './Screen/mobile';
+import Table from '@/src/components/Table';
+import { customTheme } from '@/src/utils/theme';
 
 export default function CategoryPresentation() {
   const { classes, columns, rows, isMobilV1 } = useViewModel();
@@ -55,8 +56,8 @@ export default function CategoryPresentation() {
               <ChartMobile />
             ) : (
               <CustomPieChart
-                color="#1b5e20"
-                type="line"
+                color={customTheme.palette.primary.dark}
+                type="bar"
                 width="100%"
                 height="370px"
                 dataChart={[10, 1, 1, 1, 1, 0, 130, 50, 20, 10, 10, 30]}
@@ -72,7 +73,7 @@ export default function CategoryPresentation() {
           </Box>
         </Box>
         <Typography mb={2}>History</Typography>
-        <CustomTable columns={columns} rows={rows} />
+        <Table columns={columns} rows={rows} />
       </Box>
     </div>
   );
