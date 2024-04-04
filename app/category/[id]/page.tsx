@@ -3,7 +3,7 @@ import CategoryPresentation from '@/src/presentation/Category';
 
 export default function CategoryPage() {
   return (
-    <div>
+    <div className="defaultMobilePadding">
       <CategoryPresentation />
     </div>
   );

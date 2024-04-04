@@ -35,33 +35,36 @@ export default function Dashboard() {
                 <SideNav />
               </Grid>
             )}
-            <Typography variant="h5" fontWeight={700}>
-              Daily Transactions
-            </Typography>
-            <Box sx={classes.searchWrapper}>
-              <Paper component="form" sx={classes.PaperSx}>
-                <InputBase
-                  sx={{ ml: 1, flex: 1 }}
-                  placeholder="Search "
-                  inputProps={{ 'aria-label': 'search google maps' }}
-                />
-                <IconButton type="button" sx={{ p: '10px' }} color="primary" aria-label="search">
-                  <SearchIcon />
-                </IconButton>
-              </Paper>
-              <Box>
-                <IconButton
-                  type="button"
-                  sx={classes.iconSx}
-                  aria-label="search"
-                  onClick={() => handleAddTransaction()}
-                >
-                  <AddIcon />
-                </IconButton>
+            <Box className="defaultMobilePadding">
+              <Typography variant="h5" fontWeight={700}>
+                Daily Transactions
+              </Typography>
+              <Box sx={classes.searchWrapper}>
+                <Paper component="form" sx={classes.PaperSx}>
+                  <InputBase
+                    sx={{ ml: 1, flex: 1 }}
+                    placeholder="Search "
+                    inputProps={{ 'aria-label': 'search google maps' }}
+                  />
+                  <IconButton type="button" sx={{ p: '10px' }} color="primary" aria-label="search">
+                    <SearchIcon />
+                  </IconButton>
+                </Paper>
+                <Box>
+                  <IconButton
+                    type="button"
+                    sx={classes.iconSx}
+                    aria-label="search"
+                    onClick={() => handleAddTransaction()}
+                  >
+                    <AddIcon />
+                  </IconButton>
+                </Box>
               </Box>
             </Box>
+
             {/* Calendar by week */}
-            <Box>
+            <Box className="defaultMobilePadding">
               <AppCalendar />
             </Box>
             {/* Total money Expense, Income, Balance */}

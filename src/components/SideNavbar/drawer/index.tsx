@@ -74,6 +74,7 @@ export default function ResponsiveDrawer(props: Props) {
           width: '100%',
           ml: { sm: `${drawerWidth}px` },
           background: 'white',
+          zIndex: 9999999999,
         }}
       >
         <Toolbar>

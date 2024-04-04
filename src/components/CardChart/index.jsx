@@ -1,11 +1,10 @@
 /** @format */
 
-import { Box, Typography, IconButton } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import React from 'react';
 import CustomPieChart from '../Chart';
 import { useStyles } from './useStyles';
 import { formatCurrency } from '@/src/utils/helper';
-import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 
 export default function CardChart({
   bgColor,
@@ -56,9 +55,6 @@ export default function CardChart({
                 <Typography fontSize="17px" fontWeight={700} sx={{ marginRight: '10px' }}>
                   {category}
                 </Typography>
-                <IconButton>
-                  <RemoveRedEyeIcon style={{ color: 'gray', fontSize: '18px' }} />
-                </IconButton>
               </Box>
 
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
