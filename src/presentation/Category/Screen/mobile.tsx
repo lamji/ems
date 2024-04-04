@@ -7,6 +7,7 @@ import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { formatCurrency } from '@/src/utils/helper';
 import { labels } from '@/src/components/Chart/utils';
 import CustomPieChart from '@/src/components/Chart';
+import { customTheme } from '@/src/utils/theme';
 
 export function CardMobile() {
   const { classes, handleClick, state } = useViewModel();
@@ -46,10 +47,9 @@ export function CardMobile() {
 
 export const ChartMobile = () => {
   const width = labels.length * 50;
-  console.log(width);
   return (
     <CustomPieChart
-      color="#1b5e20"
+      color={customTheme.palette.primary.dark}
       type="bar"
       width={`${width}px`}
       height="170px"
