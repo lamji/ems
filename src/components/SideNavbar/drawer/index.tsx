@@ -12,7 +12,6 @@ import BasicList from '../../List';
 import { useAppSelector, useAppDispatch } from '@/src/utils/redux/hooks';
 import { setDrawerOpen } from '@/src/utils/redux/slices/common';
 import useStyles from '../useStyles';
-import { customTheme } from '@/src/utils/theme';
 
 const drawerWidth = 280;
 
@@ -52,8 +51,7 @@ export default function ResponsiveDrawer(props: Props) {
       style={{
         ...classes.root,
         paddingTop: '10px',
-        backgroundColor: customTheme.palette.primary.main,
-        height: '100vh',
+        height: 'auto',
       }}
     >
       <Header />

@@ -7,6 +7,10 @@ const initialState = {
   },
   dialog: {
     isOpen: false,
+    fullWidth: {
+      isOpen: false,
+      data: {},
+    },
   },
   date: {
     selectedDate: [
@@ -16,6 +20,9 @@ const initialState = {
         key: 'selection',
       },
     ],
+  },
+  path: {
+    pathName: '',
   },
 };
 
@@ -34,11 +41,18 @@ const commonSlice = createSlice({
     setDateRange(state, action) {
       state.date.selectedDate = action.payload;
     },
+    setPathName(state, action) {
+      state.path.pathName = action.payload;
+    },
+    setFullWidthOpen(state, action) {
+      state.dialog.fullWidth = action.payload;
+    },
   },
 });
 
 // Export the action creator for getResourcesSuccess
-export const { setDrawerOpen, openDialog, setDateRange } = commonSlice.actions;
+export const { setDrawerOpen, openDialog, setDateRange, setPathName, setFullWidthOpen } =
+  commonSlice.actions;
 
 // Export the reducer
 export default commonSlice.reducer;

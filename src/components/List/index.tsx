@@ -1,64 +1,105 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Link from 'next/link';
-import { Divider, Typography } from '@mui/material';
+import { Typography, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ViewModel from './viewModel';
 import { ListSideNav2 } from '@/src/utils/constants';
 import Image from 'next/image';
-
-// Import MUI icons for categories
+import { customTheme } from '@/src/utils/theme';
+import CategoryIcon from '@mui/icons-material/Category';
 
 export default function BasicList() {
   const { classes, activeItem, handleListClick } = ViewModel();
+  const [isExpensesOpen, setIsExpensesOpen] = useState(false);
+
+  const handleExpensesClick = () => {
+    setIsExpensesOpen(!isExpensesOpen);
+  };
 
   return (
     <Box>
       <nav aria-label="secondary mailbox folders">
         <List>
-          <ListItem disablePadding sx={{ mb: 1 }}>
-            <Link href="/dashboard" passHref style={classes.link}>
-              <ListItemButton
-                onClick={() => handleListClick()}
-                sx={{
-                  borderRadius: '10px',
-                  backgroundColor: activeItem === '/dashboard' ? 'primary.dark' : 'inherit',
-                  '&:hover': {
-                    backgroundColor: activeItem === '/dashboard' ? 'primary.dark' : '#ccc',
-                  },
-                }}
-              >
-                <DashboardIcon style={{ marginRight: '10px' }} />{' '}
-                <ListItemText primary="Dashboard" />
-              </ListItemButton>
-            </Link>
-          </ListItem>
-          <Divider sx={{ mb: '10px' }} />
-          <Box sx={classes.categoryListWrapper}>
-            <Typography>Expenses Category List</Typography>
-          </Box>
+          <Link href="/dashboard" passHref style={classes.link}>
+            <ListItemButton
+              onClick={() => handleListClick()}
+              sx={{
+                borderRadius: '10px',
+                color: activeItem === '/dashboard' ? 'white' : 'unset',
+                backgroundColor: activeItem === '/dashboard' ? 'primary.dark' : 'inherit',
+                '&:hover': {
+                  backgroundColor: activeItem === '/dashboard' ? 'primary.dark' : '#ccc',
+                },
+              }}
+            >
+              <DashboardIcon style={{ marginRight: '10px' }} />
+              <ListItemText primary="Dashboard" />
+            </ListItemButton>
+          </Link>
 
-          <Box sx={classes.rootCategory} className="sideBarCustom">
-            {ListSideNav2.map((item: any, idx: number) => {
-              return (
-                <ListItem disablePadding key={idx}>
-                  <Link href={item.url} passHref style={classes.link}>
+          <Link href="/setting" passHref style={classes.link}>
+            <ListItemButton
+              onClick={() => handleListClick()}
+              sx={{
+                borderRadius: '10px',
+                color: activeItem === '/setting' ? 'white' : 'unset',
+                backgroundColor: activeItem === '/setting' ? 'primary.dark' : 'inherit',
+                '&:hover': {
+                  backgroundColor: activeItem === '/setting' ? 'primary.dark' : '#ccc',
+                },
+              }}
+            >
+              <SettingsIcon style={{ marginRight: '10px' }} />
+              <ListItemText primary="Configuration" />
+            </ListItemButton>
+          </Link>
+
+          {/* Expenses Category List */}
+          <Accordion
+            expanded={isExpensesOpen}
+            onChange={handleExpensesClick}
+            sx={{
+              borderRadius: '10px',
+              backgroundColor: 'inherit',
+              marginTop: '5px',
+            }}
+            elevation={0}
+          >
+            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+              <CategoryIcon style={{ marginRight: '10px' }} />
+              <Typography>Expenses Category</Typography>
+            </AccordionSummary>
+            <AccordionDetails
+              sx={{
+                ...classes.rootCategory,
+                paddingLeft: '40px',
+                background: '#e8effc',
+                borderRadius: '10px',
+                height: '400px',
+                overflowY: 'auto', // Enable vertical scrolling
+              }}
+            >
+              <List>
+                {ListSideNav2.map((item: any, idx: number) => (
+                  <Link href={item.url} passHref style={classes.link} key={idx}>
                     <ListItemButton
                       onClick={() => handleListClick()}
                       sx={{
                         borderRadius: '10px',
+                        color: activeItem === item.url ? 'white' : 'unset',
                         mb: '5px',
-                        backgroundColor: activeItem === item.url ? 'primary.dark' : 'inherit',
+                        backgroundColor:
+                          activeItem === item.url ? customTheme.palette.primary.dark : 'inherit',
                         '&:hover': {
-                          backgroundColor: activeItem === item.url ? 'primary.dark' : '#ccc',
+                          backgroundColor: activeItem === item.url ? 'primary.light' : '#ccc',
                         },
                       }}
                     >
@@ -71,46 +112,28 @@ export default function BasicList() {
                           style={classes.images}
                         />
                       </Box>
-
                       <ListItemText primary={item.label} />
                     </ListItemButton>
                   </Link>
-                </ListItem>
-              );
-            })}
-          </Box>
-          <ListItem disablePadding sx={{ mt: 2 }}>
-            <Link href="/setting" passHref style={classes.link}>
-              <ListItemButton
-                onClick={() => handleListClick()}
-                sx={{
-                  borderRadius: '10px',
-                  backgroundColor: activeItem === '/setting' ? 'primary.dark' : 'inherit',
-                  '&:hover': {
-                    backgroundColor: activeItem === '/setting' ? 'primary.dark' : '#ccc',
-                  },
-                }}
-              >
-                <SettingsIcon style={{ marginRight: '10px' }} />{' '}
-                <ListItemText primary="Configuration" />
-              </ListItemButton>
-            </Link>
-          </ListItem>
-          <ListItem disablePadding sx={{ mb: 2 }}>
-            <Link href="/logout" passHref style={classes.link}>
-              <ListItemButton
-                onClick={() => handleListClick()}
-                sx={{
-                  borderRadius: '10px',
-                  '&:hover': {
-                    backgroundColor: '#ccc',
-                  },
-                }}
-              >
-                <LogoutIcon style={{ marginRight: '10px' }} /> <ListItemText primary="Logout" />
-              </ListItemButton>
-            </Link>
-          </ListItem>
+                ))}
+              </List>
+            </AccordionDetails>
+          </Accordion>
+
+          <Link href="/logout" passHref style={classes.link}>
+            <ListItemButton
+              onClick={() => handleListClick()}
+              sx={{
+                borderRadius: '10px',
+                '&:hover': {
+                  backgroundColor: '#ccc',
+                },
+              }}
+            >
+              <LogoutIcon style={{ marginRight: '10px' }} />
+              <ListItemText primary="Logout" />
+            </ListItemButton>
+          </Link>
         </List>
       </nav>
     </Box>

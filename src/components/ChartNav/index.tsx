@@ -7,6 +7,7 @@ import useViewModel from './useViewModel';
 import { formatCurrencyTotal, useIsMobile } from '@/src/utils/helper';
 import CustomPieChart from '../Chart';
 import CardChart from '../CardChart';
+import { customTheme } from '@/src/utils/theme';
 
 export default function SideNav() {
   const { isMobile } = useIsMobile();
@@ -75,7 +76,7 @@ export default function SideNav() {
           {/* Expense by category chart */}
           <Box>
             <CardChart
-              bgColor="#fbe9d2"
+              bgColor={customTheme.palette.primary.light}
               chartBg={['#EE9322', '#f6c990']}
               dataChartCrd={[250, mainData.balance]}
               category="Food and Beverage"
@@ -83,7 +84,7 @@ export default function SideNav() {
               percentage={calculatePercentageSpent(mainData?.balance, 250)}
             />
             <CardChart
-              bgColor="#a1a5b5"
+              bgColor={customTheme.palette.secondary.light}
               chartBg={['#141E46', '#727890']}
               dataChartCrd={[500, mainData?.balance]}
               category="Food and Beverage"
@@ -91,7 +92,7 @@ export default function SideNav() {
               percentage={calculatePercentageSpent(mainData?.balance, 500)}
             />
             <CardChart
-              bgColor="#fbe9d2"
+              bgColor={customTheme.palette.primary.light}
               chartBg={['#EE9322', '#f6c990']}
               dataChartCrd={[200, mainData?.balance]}
               category="Food and Beverage"

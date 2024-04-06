@@ -11,6 +11,7 @@ import { theme } from './theme';
 // This implementation is from emotion-js
 // https://github.com/emotion-js/emotion/issues/2928#issuecomment-1319747902
 export default function ThemeRegistry(props: any) {
+  console.log('theme', theme);
   const { options, children } = props;
   const [{ cache, flush }] = useState(() => {
     const cache = createCache(options);
