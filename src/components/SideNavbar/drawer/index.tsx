@@ -51,7 +51,7 @@ export default function ResponsiveDrawer(props: Props) {
       style={{
         ...classes.root,
         paddingTop: '10px',
-        height: 'auto',
+        height: '100vh',
       }}
     >
       <Header />

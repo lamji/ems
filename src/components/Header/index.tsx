@@ -1,14 +1,20 @@
+import { useIsMobile } from '@/src/utils/helper';
 import { Box, Typography } from '@mui/material';
 import React from 'react';
 
 export default function Header() {
+  const { isMobilV1 } = useIsMobile();
   return (
     <div>
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <Typography variant="h3" fontWeight={700}>
           E
         </Typography>
-        <Typography variant="h3" fontWeight={700} color="primary.contrastText">
+        <Typography
+          variant="h3"
+          fontWeight={700}
+          color={isMobilV1 ? 'primary.main' : 'primary.contrastText'}
+        >
           M
         </Typography>
         <Typography variant="h3" fontWeight={700}>
