@@ -10,7 +10,7 @@ import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
 import { Box } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '@/src/utils/redux/hooks';
-import { setFullWidthOpen } from '@/src/utils/redux/slices/common';
+import { setAddDialog, setFullWidthOpen } from '@/src/utils/redux/slices/common';
 import AddIcon from '@mui/icons-material/Add';
 
 const Transition = React.forwardRef(function Transition(
@@ -62,19 +62,21 @@ export default function FullScreenDialog({ children }: FullScreenDialogProps) {
         <Box className="content" sx={{ padding: '20px', mt: '40px' }}>
           {children}
         </Box>
-        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 'auto', mb: 2 }}>
-          <Button
-            variant="contained"
-            color="primary"
-            size="large"
-            sx={{ width: '60px', height: '60px', borderRadius: '100px' }}
-            onClick={() => {
-              // Add your logic here for the add button action
-            }}
-          >
-            <AddIcon />
-          </Button>
-        </Box>
+        {state.fullWidth.data.type !== 'chart' && (
+          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 'auto', mb: 2 }}>
+            <Button
+              variant="contained"
+              color="primary"
+              size="large"
+              sx={{ width: '60px', height: '60px', borderRadius: '100px' }}
+              onClick={() => {
+                dispatch(setAddDialog(true));
+              }}
+            >
+              <AddIcon />
+            </Button>
+          </Box>
+        )}
       </Dialog>
     </React.Fragment>
   );

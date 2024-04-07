@@ -2,16 +2,18 @@
 'use client';
 import { useState } from 'react';
 import createCache from '@emotion/cache';
-import { useServerInsertedHTML } from 'next/navigation';
+import { usePathname, useServerInsertedHTML } from 'next/navigation';
 import { CacheProvider } from '@emotion/react';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import { Grid } from '@mui/material';
+import SideNav from '../components/SideNavbar';
 import { theme } from './theme';
 
 // This implementation is from emotion-js
 // https://github.com/emotion-js/emotion/issues/2928#issuecomment-1319747902
 export default function ThemeRegistry(props: any) {
-  console.log('theme', theme);
+  const pathname = usePathname();
   const { options, children } = props;
   const [{ cache, flush }] = useState(() => {
     const cache = createCache(options);
@@ -51,11 +53,40 @@ export default function ThemeRegistry(props: any) {
       />
     );
   });
+
   return (
     <CacheProvider value={cache}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        {children}
+        {pathname === '/' ? (
+          <>{children}</>
+        ) : (
+          <>
+            <Grid container direction="row" justifyContent="flex-start" alignItems="flex-start">
+              <Grid item xs={12} md={0} position="fixed" sx={{ backgroundColor: 'primary.main' }}>
+                <SideNav />
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                md={12}
+                sx={{
+                  padding: {
+                    md: '10px',
+                    xs: 0,
+                  },
+                  ml: '20px',
+                  marginLeft: {
+                    xs: 0,
+                    md: '260px',
+                  },
+                }}
+              >
+                {children}
+              </Grid>
+            </Grid>
+          </>
+        )}
       </ThemeProvider>
     </CacheProvider>
   );

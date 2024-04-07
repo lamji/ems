@@ -7,10 +7,16 @@ const initialState = {
   },
   dialog: {
     isOpen: false,
+    isAdd: false,
     fullWidth: {
       isOpen: false,
-      data: {},
+      data: {
+        type: '',
+      },
     },
+  },
+  uploadImagePreviews: {
+    data: { previews: [], images: [] },
   },
   date: {
     selectedDate: [
@@ -47,12 +53,25 @@ const commonSlice = createSlice({
     setFullWidthOpen(state, action) {
       state.dialog.fullWidth = action.payload;
     },
+    setUpload(state, action) {
+      state.uploadImagePreviews.data = action.payload;
+    },
+    setAddDialog(state, action) {
+      state.dialog.isAdd = action.payload;
+    },
   },
 });
 
 // Export the action creator for getResourcesSuccess
-export const { setDrawerOpen, openDialog, setDateRange, setPathName, setFullWidthOpen } =
-  commonSlice.actions;
+export const {
+  setDrawerOpen,
+  openDialog,
+  setDateRange,
+  setPathName,
+  setFullWidthOpen,
+  setUpload,
+  setAddDialog,
+} = commonSlice.actions;
 
 // Export the reducer
 export default commonSlice.reducer;

@@ -30,12 +30,22 @@ export default function useStyles() {
       my: 2,
     },
     tableButton: {
-      fontSize: 'inherit',
       p: 0,
       alignItems: 'flex-start',
       justifyContent: 'flex-start',
       mt: 2,
-      textTransform: 'lowercase',
+      textTransform: 'capitalize',
+    },
+    boxInputWrapper: {
+      width: '90%',
+      margin: '20px auto',
+      // border: '1px solid',
+      borderColor: '#cccccc',
+      padding: '10px',
+      borderRadius: '8px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
   };
 }
