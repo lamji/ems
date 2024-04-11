@@ -9,10 +9,12 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { Grid } from '@mui/material';
 import SideNav from '../components/SideNavbar';
 import { theme } from './theme';
+import { useIsMobile } from './helper';
 
 // This implementation is from emotion-js
 // https://github.com/emotion-js/emotion/issues/2928#issuecomment-1319747902
 export default function ThemeRegistry(props: any) {
+  const { isMobilV1 } = useIsMobile();
   const pathname = usePathname();
   const { options, children } = props;
   const [{ cache, flush }] = useState(() => {
@@ -63,7 +65,13 @@ export default function ThemeRegistry(props: any) {
         ) : (
           <>
             <Grid container direction="row" justifyContent="flex-start" alignItems="flex-start">
-              <Grid item xs={12} md={0} position="fixed" sx={{ backgroundColor: 'primary.main' }}>
+              <Grid
+                item
+                xs={12}
+                md={0}
+                position="fixed"
+                sx={{ backgroundColor: isMobilV1 ? 'transparent' : 'primary.main' }}
+              >
                 <SideNav />
               </Grid>
               <Grid

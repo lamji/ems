@@ -1,5 +1,7 @@
 // import { useEffect, useState } from 'react';
+import { useIsMobile } from '@/src/utils/helper';
 import { useStyles } from './useStyles';
+
 // import { getAll } from '@/app/api/getData';
 // import { useDispatch } from 'react-redux';
 // import {
@@ -11,6 +13,7 @@ import { useStyles } from './useStyles';
 import { dashboardData } from '@/src/utils/constants';
 
 export default function useViewModel() {
+  const { isMobilV1 } = useIsMobile();
   // const { handleSignOut } = useAuth();
   // const dispatch = useDispatch();
   // const dataStore = dashboardData;
@@ -85,5 +88,6 @@ export default function useViewModel() {
     // handleSignOut,
     calculatePercentageSpent,
     incomeLabels,
+    isMobilV1,
   };
 }

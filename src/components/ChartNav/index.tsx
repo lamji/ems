@@ -11,13 +11,17 @@ import { customTheme } from '@/src/utils/theme';
 
 export default function SideNav() {
   const { isMobile } = useIsMobile();
-  const { classes, mainData, calculatePercentageSpent, incomeLabels } = useViewModel();
+  const { classes, mainData, calculatePercentageSpent, incomeLabels, isMobilV1 } = useViewModel();
 
   return (
     <Box sx={{ ...classes.container, marginTop: isMobile ? '20px' : '0px' }}>
       <Grid container direction="column" justifyContent="space-between" alignItems="flex-start">
         <Grid item sx={{ width: '100%' }}>
-          <Typography variant="h6" fontWeight={700}>
+          <Typography
+            variant="h6"
+            fontWeight={700}
+            sx={{ textAlign: isMobilV1 ? 'center' : 'left' }}
+          >
             Monthly Overview
           </Typography>
           <Box sx={{ margin: '20px 0' }}>

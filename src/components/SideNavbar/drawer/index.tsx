@@ -6,7 +6,6 @@ import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import Header from '../../Header';
 import BasicList from '../../List';
 import { useAppSelector, useAppDispatch } from '@/src/utils/redux/hooks';
@@ -71,7 +70,7 @@ export default function ResponsiveDrawer(props: Props) {
         sx={{
           width: '100%',
           ml: { sm: `${drawerWidth}px` },
-          background: 'white',
+          background: 'transparent',
           zIndex: 9999999999,
         }}
       >
@@ -84,19 +83,6 @@ export default function ResponsiveDrawer(props: Props) {
           >
             <MenuIcon />
           </IconButton>
-          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Typography variant="h5" fontWeight={700} color="primary.main">
-                E
-              </Typography>
-              <Typography variant="h5" fontWeight={700} color="primary.main">
-                M
-              </Typography>
-              <Typography variant="h5" fontWeight={700} color="primary.main">
-                S
-              </Typography>
-            </Box>
-          </Box>
         </Toolbar>
       </AppBar>
       <Box

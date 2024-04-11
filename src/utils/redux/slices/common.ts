@@ -30,6 +30,9 @@ const initialState = {
   path: {
     pathName: '',
   },
+  sideBar: {
+    isVisible: false,
+  },
 };
 
 // Create a Redux slice for managing card data
@@ -59,6 +62,9 @@ const commonSlice = createSlice({
     setAddDialog(state, action) {
       state.dialog.isAdd = action.payload;
     },
+    setSideBarVisible(state, action) {
+      state.sideBar.isVisible = action.payload;
+    },
   },
 });
 
@@ -71,6 +77,7 @@ export const {
   setFullWidthOpen,
   setUpload,
   setAddDialog,
+  setSideBarVisible,
 } = commonSlice.actions;
 
 // Export the reducer

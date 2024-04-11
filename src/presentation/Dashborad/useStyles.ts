@@ -16,11 +16,8 @@ export default function useStyles() {
       p: '2px 4px',
       display: 'flex',
       alignItems: 'center',
-      width: {
-        xs: 300,
-        md: 400,
-      },
       boxShadow: 'none',
+      width: '100%',
       // backgroundColor: "#f1f1f1",
       border: '1px solid',
       borderColor: 'primary.main',
