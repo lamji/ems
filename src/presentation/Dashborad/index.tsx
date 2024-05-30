@@ -11,18 +11,15 @@ import SideNav from '@/src/components/ChartNav';
 import FloatingAddButton from '@/src/components/FloatingIcon';
 import MobileBackgroundComponent from '@/src/components/MobileHeaderWrapper';
 import SwipeableEdgeDrawer from '@/src/components/Puller';
-import MobileScreen from './Screen/mobile';
 import DesktopView from './Screen/desktop';
+import { dashBoardTotal } from '@/src/utils/constants';
+import { MobileScreenAddTransation, MobileScreenOPenTransation } from './Screen/mobile';
 
 export default function Dashboard() {
-  const { classes, isMobile, isMobilV1 } = useViewModel();
+  const { classes, isMobile, isMobilV1, state } = useViewModel();
   return (
     <div>
-      <FloatingAddButton
-        onClick={function (): void {
-          throw new Error('Function not implemented.');
-        }}
-      />
+      <FloatingAddButton />
 
       <Box
         sx={{
@@ -32,7 +29,41 @@ export default function Dashboard() {
           },
         }}
       >
-        {isMobilV1 ? (
+        {!isMobilV1 && (
+          <>
+            <Typography
+              className="defaultMobilePadding"
+              variant="h5"
+              sx={{
+                fontWeight: 700,
+                marginTop: isMobilV1 ? '20px' : 'unset',
+                color: isMobilV1 ? 'primary.contrastText' : 'unset',
+              }}
+            >
+              Dashboard
+            </Typography>
+            <Box sx={classes.amountCardWrapper}>
+              {dashBoardTotal.map((item, idx) => {
+                return (
+                  <Box
+                    key={idx}
+                    sx={{
+                      ...classes.amountCard,
+                      borderColor: item.color,
+                    }}
+                  >
+                    <Typography fontWeight={700}>{item.label}</Typography>
+                    <Typography color={item.color}>
+                      {item.sign + ' '}
+                      {formatCurrencyTotal(item.amount)}
+                    </Typography>
+                  </Box>
+                );
+              })}
+            </Box>
+          </>
+        )}
+        {isMobilV1 && (
           <>
             <MobileBackgroundComponent>
               <Typography
@@ -40,9 +71,8 @@ export default function Dashboard() {
                 variant="h5"
                 sx={{
                   fontWeight: 700,
-
                   marginTop: isMobilV1 ? '20px' : 'unset',
-                  color: isMobilV1 ? 'primary.contrastText' : 'unset',
+                  color: 'white',
                 }}
               >
                 Dashboard
@@ -67,25 +97,10 @@ export default function Dashboard() {
               </Box>
             </MobileBackgroundComponent>
           </>
-        ) : (
-          <>
-            <Typography
-              className="defaultMobilePadding"
-              variant="h5"
-              sx={{
-                fontWeight: 700,
-                mb: '40px',
-                marginTop: isMobilV1 ? '20px' : 'unset',
-                color: isMobilV1 ? 'primary.contrastText' : 'unset',
-              }}
-            >
-              Dashboard
-            </Typography>
-          </>
         )}
 
         <Grid
-          className="defaultBoxShadow"
+          className={`${isMobilV1 ? 'defaultBoxShadow' : ''}`}
           container
           direction="row"
           justifyContent="space-between"
@@ -114,7 +129,11 @@ export default function Dashboard() {
       </Box>
       {isMobilV1 && (
         <SwipeableEdgeDrawer>
-          <MobileScreen />
+          {state.puller.type === 'openTransaction' ? (
+            <MobileScreenOPenTransation />
+          ) : (
+            <MobileScreenAddTransation />
+          )}
         </SwipeableEdgeDrawer>
       )}
     </div>

@@ -26,7 +26,7 @@ export default function AmountCard({ title, amount, color, variant }: cardTypeIn
         <Box>
           <Typography>{title ? title : ''}</Typography>
           <Typography sx={{ fontWeight: 700, color: color }} variant={variant}>
-            {color === 'white' ? amount : color === 'error.dark' ? `- ${amount}` : `+ ${amount}`}
+            {color === 'white' ? amount : color === 'error.main' ? `- ${amount}` : `+ ${amount}`}
           </Typography>
         </Box>
       </Box>

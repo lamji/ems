@@ -293,3 +293,43 @@ export const ListSideNav = [
     url: '/category/2',
   },
 ];
+
+export const dashBoardTotal = [
+  {
+    id: 1,
+    label: 'Total Expenses',
+    amount: 2000,
+    color: 'error.main',
+    bg: 'error.light',
+    sign: '-',
+  },
+  {
+    id: 1,
+    label: 'Remaining Funds',
+    amount: 2000,
+    color: 'primary.main',
+    bg: 'primary.light',
+    sign: '',
+  },
+  {
+    id: 1,
+    label: 'Total Income',
+    amount: 2000,
+    color: 'success.main',
+    bg: 'success.light',
+    sign: '+',
+  },
+];
+
+export const bills = [
+  {
+    id: 1,
+    name: 'Mr Cash',
+    amount: 5000,
+  },
+  {
+    id: 2,
+    name: 'Mr Cash',
+    amount: 5000,
+  },
+];

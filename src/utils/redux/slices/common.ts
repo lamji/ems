@@ -33,6 +33,24 @@ const initialState = {
   sideBar: {
     isVisible: false,
   },
+  puller: {
+    isOpen: false,
+    type: '',
+  },
+  transaction: {
+    description: 'This transaction will add to main balance',
+    active: {
+      add_funds: true,
+      transfer_funds: false,
+      split_funds: false,
+      spend: false,
+      pay: false,
+    },
+  },
+  transferFrom: {
+    fundAmount: 0,
+    value: '',
+  },
 };
 
 // Create a Redux slice for managing card data
@@ -65,11 +83,24 @@ const commonSlice = createSlice({
     setSideBarVisible(state, action) {
       state.sideBar.isVisible = action.payload;
     },
+    openPuller(state, action) {
+      state.puller = action.payload;
+    },
+    setTransaction(state, action) {
+      state.transaction = action.payload;
+    },
+    setFundAmount(state, action) {
+      state.transferFrom.fundAmount = action.payload;
+    },
+    setTransferFrom(state, action) {
+      state.transferFrom.value = action.payload;
+    },
   },
 });
 
 // Export the action creator for getResourcesSuccess
 export const {
+  openPuller,
   setDrawerOpen,
   openDialog,
   setDateRange,
@@ -78,6 +109,9 @@ export const {
   setUpload,
   setAddDialog,
   setSideBarVisible,
+  setTransaction,
+  setTransferFrom,
+  setFundAmount,
 } = commonSlice.actions;
 
 // Export the reducer

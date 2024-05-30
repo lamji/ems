@@ -1,18 +1,32 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import { Button, IconButton } from '@mui/material';
+import { IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import DragHandleIcon from '@mui/icons-material/DragHandle';
+import { useAppSelector, useAppDispatch } from '@/src/utils/redux/hooks';
+import { openPuller } from '@/src/utils/redux/slices/common';
+
 function SwipeableModal({ children }: any) {
   const [open, setOpen] = useState(false);
+  const state = useAppSelector((state) => state.common);
+  const dispatch = useAppDispatch();
 
   const toggleDrawer = (open: any) => (event: any) => {
+    console.log('open', open);
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
     setOpen(open);
   };
+
+  useEffect(() => {
+    if (state.puller.isOpen) {
+      console.log('state.puller.isOpen', state.puller.isOpen);
+      setOpen(true);
+    } else {
+      setOpen(false);
+    }
+  }, [state.puller.isOpen]);
 
   return (
     <div
@@ -26,16 +40,10 @@ function SwipeableModal({ children }: any) {
         borderTopRightRadius: '10px',
       }}
     >
-      {!open && (
-        <Button onClick={toggleDrawer(true)}>
-          <DragHandleIcon />
-        </Button>
-      )}
-
       <SwipeableDrawer
         anchor="bottom"
         open={open}
-        onClose={toggleDrawer(false)}
+        onClose={() => dispatch(openPuller(false))}
         onOpen={toggleDrawer(true)}
         sx={{
           '& .MuiDrawer-paper': {
@@ -54,7 +62,12 @@ function SwipeableModal({ children }: any) {
           }}
         >
           <div style={{ position: 'fixed', textAlign: 'right', right: 0, paddingRight: '20px' }}>
-            <IconButton onClick={toggleDrawer(false)}>
+            <IconButton
+              onClick={() => {
+                dispatch(openPuller(false));
+                toggleDrawer(false);
+              }}
+            >
               <CloseIcon />
             </IconButton>
           </div>

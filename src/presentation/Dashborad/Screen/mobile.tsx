@@ -5,8 +5,9 @@ import React from 'react';
 import useViewModel from '../useViewModel';
 import { dashboardData } from '@/src/utils/constants';
 import CardItem from '@/src/components/CardItem';
+import Transaction from '@/src/components/Transaction';
 
-export default function MobileScreen() {
+export function MobileScreenOPenTransation() {
   const { classes } = useViewModel();
   return (
     <div>
@@ -48,5 +49,13 @@ export default function MobileScreen() {
         </Box>
       </Box>
     </div>
+  );
+}
+
+export function MobileScreenAddTransation() {
+  return (
+    <Box mb={5}>
+      <Transaction />
+    </Box>
   );
 }

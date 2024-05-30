@@ -34,8 +34,9 @@ export default function DesktopView() {
         <AppCalendar />
       </Box>
       {/* Total money Expense, Income, Balance */}
-      <Box>
+      <Box mt={4}>
         <Divider sx={{ mb: 2 }} />
+        <Typography mb={2}>Today</Typography>
         <Box>
           {Object.keys(dashboardData).length !== 0 &&
             dashboardData?.transactions.map((res, id) => {

@@ -31,5 +31,20 @@ export default function useStyles() {
         backgroundColor: 'success.main',
       },
     },
+    amountCardWrapper: {
+      mb: 4,
+      padding: '10px 25px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    amountCard: {
+      padding: '10px',
+      mx: 2,
+      borderRadius: '10px',
+      width: '30%',
+      height: '100px',
+      border: '1px solid',
+    },
   };
 }

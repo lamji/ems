@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Divider, Typography } from '@mui/material';
 import React from 'react';
 import useViewModel from '../useViewModel';
 import { ListSideNav2 } from '@/src/utils/constants';
@@ -26,6 +26,7 @@ export function MobileCategoryConfig() {
                     borderColor: 'gray',
                     padding: '5px',
                     borderRadius: '5px',
+                    marginBottom: '30px',
                   }}
                 >
                   <EditModeBox
@@ -66,6 +67,7 @@ export function MobileCategoryConfig() {
             >
               Delete
             </Button>
+            <Divider />
           </Box>
         );
       })}
